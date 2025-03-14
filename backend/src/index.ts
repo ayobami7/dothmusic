@@ -1,8 +1,5 @@
-import dotenv from 'dotenv';
-dotenv.config();
-
 import express from 'express';
-import cors from 'cors';
+
 import {User} from './models/User';
 import { AppDataSource } from './data-source';
 import router from './routes/userRoutes';
@@ -10,7 +7,7 @@ import router from './routes/userRoutes';
 const app = express();
 const PORT  = process.env.PORT || 4000;
 
-app.use(cors());
+// app.use(cors());
 app.use(express.json());
 
 //Creatw a database connection
