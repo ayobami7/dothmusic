@@ -1,7 +1,9 @@
-import express from 'express';
+// import dotenv from 'dotenv';
+// dotenv.config();
 
+import express from 'express';
 import {User} from './models/User';
-import { AppDataSource } from './data-source';
+import { AppDataSource } from './config/data-source';
 import router from './routes/userRoutes';
 
 const app = express();
@@ -22,7 +24,7 @@ AppDataSource.initialize()
 // app.get('/', (req, res) => {
 //     res.send('Hello World');
 // });
-app.use('api/users', router)
+app.use('/api/users', router)
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

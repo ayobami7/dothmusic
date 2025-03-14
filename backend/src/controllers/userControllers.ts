@@ -1,6 +1,6 @@
 import {Request, Response} from 'express';
 import { User } from '../models/User';
-import { AppDataSource } from '../data-source';
+import { AppDataSource } from '../config/data-source';
 
 
 const userRepository = AppDataSource.getRepository(User);
@@ -16,14 +16,8 @@ export const getUser = async (req: Request, res: Response) => {
 }
 
 export const createUser = async (req: Request, res: Response) => {
-    const{username, email, password} = req.body;
-
-    const user = new User();
-    user.username = username;
-    user.email = email;
-    user.password = password
-
-    const createdUser = userRepository.create({username, email, password} );
+    const{username, email, password, role} = req.body;
+    const createdUser = userRepository.create({username, email, password, role} );
     const result = await userRepository.save(createdUser);
     res.json(result);
 }
