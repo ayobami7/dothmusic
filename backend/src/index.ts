@@ -1,10 +1,9 @@
-// import dotenv from 'dotenv';
+// import dotenv from "dotenv";
 // dotenv.config();
-
+// import cors from 'cors';
 import express from 'express';
-import {UserAccount} from './models/User';
 import { AppDataSource } from './config/data-source';
-import router from './routes/userRoutes';
+import userRoutes from './routes/userRoutes';
 
 const app = express();
 const PORT  = process.env.PORT || 4000;
@@ -12,7 +11,7 @@ const PORT  = process.env.PORT || 4000;
 // app.use(cors());
 app.use(express.json());
 
-//Creatw a database connection
+//Create a database connection
 AppDataSource.initialize()
 .then(() => {
     console.log('Database connected');
@@ -21,11 +20,10 @@ AppDataSource.initialize()
 });
 
 //Routes
-// app.get('/', (req, res) => {
-//     res.send('Hello World');
-// });
-app.use('/api/users', router)
+app.use('/api/users', userRoutes)
 
+
+// server start
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
