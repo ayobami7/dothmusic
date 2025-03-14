@@ -2,7 +2,7 @@
 // dotenv.config();
 
 import express from 'express';
-import {User} from './models/User';
+import {UserAccount} from './models/User';
 import { AppDataSource } from './config/data-source';
 import router from './routes/userRoutes';
 

@@ -1,9 +1,9 @@
 import {Request, Response} from 'express';
-import { User } from '../models/User';
+import { UserAccount } from '../models/User';
 import { AppDataSource } from '../config/data-source';
 
 
-const userRepository = AppDataSource.getRepository(User);
+const userRepository = AppDataSource.getRepository(UserAccount);
 
 export const getUsers = async (req: Request, res: Response) => {
     const users = await userRepository.find();
